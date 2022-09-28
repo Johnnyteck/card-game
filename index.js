@@ -16,7 +16,7 @@ const comment = document.getElementById("text")
 let deckId = ''
 let card1Value = 0
 let card2Value = 0
-fetch(`http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`) 
+fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`) 
 .then(res => res.json()) // parse response as JSON
   .then(data => {
     console.log(data)
@@ -40,7 +40,7 @@ function showResetButton() {
 
 /* Hook up a click event listener to the Roll Dice Button. */
 function rollDice1() {
-    const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+    const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
     fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
@@ -67,7 +67,7 @@ function rollDice1() {
 }
 
 function rollDice2() {
-    const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+    const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
     fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
