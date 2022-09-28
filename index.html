@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="container">  
+            <img class="squid" src="images/Squid-Game-Official-Logo-PNG.png" alt="squid game image">    
+            <h1 id="message">Player 1 Turn</h1>
+            <div class="players">
+                <div id="player1">
+                    <h1>Score: 
+                        <span id="player1Scoreboard">0</span>
+                    </h1>
+                    <div id="player1Dice" class="dice active">-</div>
+                </div>
+                <div id="image">
+                    <img class="squid-soldier" src="images/squid-soldier.png" alt="squid game image">
+                </div>
+                <div id="player2">
+                    <h1>Score: 
+                        <span id="player2Scoreboard">0</span>
+                    </h1>
+                    <div id="player2Dice" class="dice">-</div>
+                </div>
+            </div>
+
+            <p id="text"></p>
+
+            <div class="play-btn">
+                <button id="rollBtn1">Roll Dice 🎲</button>
+                <button id="resetBtn">Reset Game 🔁</button>                
+                <button id="rollBtn2">Roll Dice 🎲</button>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
