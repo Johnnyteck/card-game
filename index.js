@@ -96,15 +96,6 @@ resetBtn.addEventListener("click", function(){
     reset()
 })
 
-// if (player1Score === 0) {
-//     comment.textContent = ``
-// } else if (player1Score === 6 || player2Score === 6 ) {
-//     comment.textContent = "You just have just drawn a perfect number 6. Nice 🤗"
-// } else if (player1Score === 2 || player2Score === 2) {
-//     comment.textContent = `You just have just drawn a the only even square number. Weldone 🤗`
-// }
-// else {}
-
 // Convert card value to integer
 function convertNum(val) {
     if (val ===  "ACE") {
