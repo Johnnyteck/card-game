@@ -16,7 +16,7 @@ const comment = document.getElementById("text")
 let deckId = ''
 let card1Value = 0
 let card2Value = 0
-fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`) 
+fetch(`http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`) 
 .then(res => res.json()) // parse response as JSON
   .then(data => {
     console.log(data)
@@ -40,7 +40,7 @@ function showResetButton() {
 
 /* Hook up a click event listener to the Roll Dice Button. */
 function rollDice1() {
-    const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+    const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
     fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
@@ -67,7 +67,7 @@ function rollDice1() {
 }
 
 function rollDice2() {
-    const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+    const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
     fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
@@ -95,6 +95,15 @@ function rollDice2() {
 resetBtn.addEventListener("click", function(){
     reset()
 })
+
+// if (player1Score === 0) {
+//     comment.textContent = ``
+// } else if (player1Score === 6 || player2Score === 6 ) {
+//     comment.textContent = "You just have just drawn a perfect number 6. Nice 🤗"
+// } else if (player1Score === 2 || player2Score === 2) {
+//     comment.textContent = `You just have just drawn a the only even square number. Weldone 🤗`
+// }
+// else {}
 
 // Convert card value to integer
 function convertNum(val) {
