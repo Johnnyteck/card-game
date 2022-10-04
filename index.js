@@ -42,7 +42,7 @@ function rollDice1() {
   fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
-      /)console.log(data);
+      //console.log(data);
 
       if (player1Turn) {
         player1Card.src = data.cards[0].image;
