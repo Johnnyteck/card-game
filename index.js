@@ -20,7 +20,7 @@ let card2Value = 0;
 fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`)
   .then((res) => res.json()) // parse response as JSON
   .then((data) => {
-    console.log(data);
+    //console.log(data);
     deckId = data.deck_id;
   })
   .catch((err) => {
@@ -42,7 +42,7 @@ function rollDice1() {
   fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
-      console.log(data);
+      /)console.log(data);
 
       if (player1Turn) {
         player1Card.src = data.cards[0].image;
@@ -66,7 +66,7 @@ function rollDice1() {
 }
 
 function rollDice2() {
-  const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`;
+  const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`;
   fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
