@@ -63,7 +63,7 @@ function rollDice1() {
 }
 
 function rollDice2() {
-  const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`;
+  const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`;
   fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
