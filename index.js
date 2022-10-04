@@ -1,6 +1,10 @@
+// Initializing values
+let deckId = ''
+let player1Turn = true
 let player1Score = 0
 let player2Score = 0
-let player1Turn = true
+let card1Value = 0
+let card2Value = 0
 
 // Create variables to store references to the necessary DOM nodes
 const player1Card = document.getElementById("player1Card")
@@ -8,39 +12,24 @@ const player2Card = document.getElementById("player2Card")
 const player1Scoreboard = document.getElementById("player1Scoreboard")
 const player2Scoreboard = document.getElementById("player2Scoreboard")
 const message = document.getElementById("message")
-const rollBtn1 = document.getElementById("rollBtn1")
-const rollBtn2 = document.getElementById("rollBtn2")
+const drawBtn1 = document.getElementById("drawBtn1")
+const drawBtn2 = document.getElementById("drawBtn2")
 const resetBtn = document.getElementById("resetBtn")
 const comment = document.getElementById("text")
 
-let deckId = ''
-let card1Value = 0
-let card2Value = 0
-fetch(`http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`) 
+//Fetch deckofcards shuffle API
+fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`) 
 .then(res => res.json()) // parse response as JSON
   .then(data => {
-    console.log(data)
     deckId = data.deck_id
   })
   .catch(err => {
       console.log(`error ${err}`)
   });
 
-rollBtn1.addEventListener("click", rollDice1)
-rollBtn2.addEventListener("click", rollDice2)
-
-
-function showResetButton() {
-    rollBtn1.style.display = "none"
-    rollBtn2.style.display = "none"
-    resetBtn.style.display = "block"
-}
-
-
-
-/* Hook up a click event listener to the Roll Dice Button. */
-function rollDice1() {
-    const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+// Button Functionalities
+function drawDice1() {
+    const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
     fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
@@ -60,13 +49,13 @@ function rollDice1() {
 
             checkWinner()
         } else{}
-  })
+    })
     .catch(err => {
         console.log(`error ${err}`)
     });   
 }
 
-function rollDice2() {
+function drawDice2() {
     const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
     fetch(url)
     .then(res => res.json()) // parse response as JSON
@@ -91,19 +80,14 @@ function rollDice2() {
         console.log(`error ${err}`)
     });   
 }
- 
-resetBtn.addEventListener("click", function(){
-    reset()
-})
 
-// if (player1Score === 0) {
-//     comment.textContent = ``
-// } else if (player1Score === 6 || player2Score === 6 ) {
-//     comment.textContent = "You just have just drawn a perfect number 6. Nice 🤗"
-// } else if (player1Score === 2 || player2Score === 2) {
-//     comment.textContent = `You just have just drawn a the only even square number. Weldone 🤗`
-// }
-// else {}
+/* Hook up a click event listener to the Draw Card Button. */
+drawBtn1.addEventListener("click", drawDice1)
+drawBtn2.addEventListener("click", drawDice2)
+resetBtn.addEventListener("click", reset)
+
+
+//Utility Functions
 
 // Convert card value to integer
 function convertNum(val) {
@@ -120,6 +104,14 @@ function convertNum(val) {
     }
 }
 
+//Show reset button
+function showResetButton() {
+    drawBtn1.style.display = "none"
+    drawBtn2.style.display = "none"
+    resetBtn.style.display = "block"
+}
+
+//Check game winner
 function checkWinner() {
     if (player1Score >= 52) {
         message.textContent = "Player 1 Won 🥳"
@@ -130,6 +122,7 @@ function checkWinner() {
     } else {}
 }
 
+//Reset game status
 function reset() {
     player1Score = 0
     player2Score = 0
@@ -139,10 +132,9 @@ function reset() {
     player1Card.src = "./images/joker.png"
     player2Card.src = "./images/joker.png"
     message.textContent = "Player 1 Turn"
-    rollBtn1.style.display = "block"
-    rollBtn2.style.display = "block"
+    drawBtn1.style.display = "block"
+    drawBtn2.style.display = "block"
     resetBtn.style.display = "none"
     player2Card.classList.remove("active")
     player1Card.classList.add("active")
 }
-
